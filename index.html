@@ -14,50 +14,57 @@
 </head>
 
 <body>
+  <script type="module" src="./script.js" defer></script>
 
   <template class="choice">
     <div class="details">
       <img src="" class="product-img">
-      <p class="product-name"> <span class="tl-price"></span></p>
+      <div class="param">
+        <p class="product-name"></p>
+        <p class="price"></p>
+        <span class="tl-price"></span>
+      </div>
       <img src="./images/icon-delete.svg" alt="delete" class="delete">
     </div>
   </template>
 
   <div class="container">
 
-    <div class="light-box" style="display: none;">
-      <div class="overlay"></div>
+    <div class="light-box">
+      <div class="overlay modal-trigger"></div>
       <div class="modal">
-        <div class="close">
-          <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
-              fill="#69707D" fill-rule="evenodd" />
-          </svg>
-        </div>
-        <div class="first-img">
+        <div class="img-box">
+          <div class="close modal-trigger">
+            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                fill="#69707D" fill-rule="evenodd" />
+            </svg>
+          </div>
           <div class="previous btn">
             <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
             </svg>
           </div>
-
-          <img src="./images/image-product-1.jpg" class="active">
-          <img src="./images/image-product-2.jpg">
-          <img src="./images/image-product-3.jpg">
-          <img src="./images/image-product-4.jpg">
-
           <div class="next btn">
             <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
               <path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
             </svg>
           </div>
-        </div>
-        <div class="thumbnail">
-          <img src="./images/image-product-1-thumbnail.jpg">
-          <img src="./images/image-product-2-thumbnail.jpg">
-          <img src="./images/image-product-3-thumbnail.jpg">
-          <img src="./images/image-product-4-thumbnail.jpg">
+
+          <div class="product-box">
+            <img src="./images/image-product-1.jpg" class="active">
+            <img src="./images/image-product-2.jpg">
+            <img src="./images/image-product-3.jpg">
+            <img src="./images/image-product-4.jpg">
+          </div>
+
+          <div class="thumbnail">
+            <img src="./images/image-product-1-thumbnail.jpg" class="active">
+            <img src="./images/image-product-2-thumbnail.jpg">
+            <img src="./images/image-product-3-thumbnail.jpg">
+            <img src="./images/image-product-4-thumbnail.jpg">
+          </div>
         </div>
       </div>
     </div>
@@ -65,15 +72,15 @@
     <header class="header">
 
       <div class="left">
-        <div class="burger-btn-open">
+        <div class="burger btn-open" id="mobile">
           <img src="./images/icon-menu.svg">
         </div>
         <div class="logo">
           <img src="./images/logo.svg" alt="logo">
         </div>
 
-        <nav class="nav">
-          <div class="burger-btn-close">
+        <nav class="nav" id="mobile">
+          <div class="burger btn-close">
             <img src="./images/icon-close.svg">
           </div>
           <ul class="navBar">
@@ -89,18 +96,23 @@
       <div class="user-box">
         <div class="panier">
           <div class="cart">
-            <svg class="cart" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+            <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
                 fill="#69707D" fill-rule="nonzero" />
             </svg>
           </div>
+          <input type="checkbox">
 
-          <div class="cart empty">
-            <p>Cart</p>
+          <div class="cartRecap empty">
+            <div class="cartRecap_Title">
+              <p>Cart</p>
+            </div>
             <hr>
-            <p class="info">Your cart is empty</p>
-            <button class="ckeckout">Checkout</button>
+            <div class="cartRecap_Empty">
+              <p class="info">Your cart is empty</p>
+            </div>
+            <button class="cartRecap_BtnValidation">Checkout</button>
           </div>
         </div>
 
@@ -110,42 +122,52 @@
 
     <main class="main">
       <aside class="aside">
-        <div class="img-box">
-          <div class="previous btn">
+
+        <div class="img-box visible">
+          <div class="previous btn" id="mobile">
             <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
             </svg>
           </div>
-
-          <img src="./images/image-product-1.jpg" class="active">
-          <img src="./images/image-product-2.jpg">
-          <img src="./images/image-product-3.jpg">
-          <img src="./images/image-product-4.jpg">
-
-          <div class="next btn">
+          <div class="next btn" id="mobile">
             <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
               <path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
             </svg>
           </div>
-        </div>
 
-        <div class="thumbnail">
-          <img src="./images/image-product-1-thumbnail.jpg" alt="product">
-          <img src="./images/image-product-2-thumbnail.jpg" alt="product">
-          <img src="./images/image-product-3-thumbnail.jpg" alt="product">
-          <img src="./images/image-product-4-thumbnail.jpg" alt="product">
+          <div class="product-box modal-trigger">
+            <img src="./images/image-product-1.jpg" class="active productImg">
+            <img src="./images/image-product-2.jpg">
+            <img src="./images/image-product-3.jpg">
+            <img src="./images/image-product-4.jpg">
+          </div>
+
+          <div class="thumbnail">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="product" class="active">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="product">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="product">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="product">
+          </div>
         </div>
       </aside>
 
       <section class="section">
-        <h3>Sneaker Company</h3>
-        <h1>Fall Limited Edition Sneakers</h1>
-        <p>
-          These low-profile sneakers are your perfect casual wear companion. Featuring a
-          durable rubber outer sole, they’ll withstand everything the weather can offer.
-        </p>
-        <p>$125.00<span>50%</span></p>
-        <p>$250.00</p>
+        <div class="store-name">
+          <h3>Sneaker Company</h3>
+        </div>
+        <div class="product-name">
+          <h1>Fall Limited Edition Sneakers</h1>
+        </div>
+        <div class="product-description">
+          <p>
+            These low-profile sneakers are your perfect casual wear companion. Featuring a
+            durable rubber outer sole, they’ll withstand everything the weather can offer.
+          </p>
+        </div>
+        <div class="product-price">
+          <p>$125.00 <span class="reduction">50%</span></p>
+          <p class="price">$250.00</p>
+        </div>
 
         <div class="btn-box">
           <div class="btn-qty">
@@ -153,8 +175,13 @@
             <p class="qty">0</p>
             <img src="./images/icon-plus.svg" alt="plus" class="plus">
           </div>
+
           <button class="btn-add">
-            <img src="./images/icon-cart.svg" alt="cart">
+            <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                fill="#69707D" fill-rule="nonzero" />
+            </svg>
             Add to cart
           </button>
         </div>
@@ -165,8 +192,9 @@
 
 
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://github.com/SaoureT13/ecommerce-product-page-main.git" target="_blank">Frontend
+      Mentor</a>.
+    Coded by <a href="https://github.com/SaoureT13/ecommerce-product-page-main.git">SAOURE Kouamé Teddy</a>.
   </div>
 </body>
 
